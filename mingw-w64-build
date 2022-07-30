@@ -337,13 +337,13 @@ default install-dir: ${HOME}/toolchains/mingw-w64-${MINGW_W64_VER}-gcc-${GCC_VER
     if [[ "${DISABLE_GDB}" == false ]] || [[ "${LIST}" == true ]]; then
         GDB_NAME="gdb"
         NAMES+=("${GDB_NAME}")
-        GDB_VER="10.1"
+        GDB_VER="12.1"
         VERSIONS+=("${GDB_VER}")
         GDB_PKG="gdb-${GDB_VER}.tar.gz"
         PKGS+=("${GDB_PKG}")
         GDB_URLS=("https://ftp.gnu.org/gnu/gdb/gdb-${GDB_VER}.tar.gz" "${ARCHIVE_URL}/${GDB_PKG}")
         URLS_VARNAMES+=('GDB_URLS')
-        GDB_SHA256="f12f388b99e1408c01308c3f753313fafa45517740c81ab7ed0d511b13e2cf55"
+        GDB_SHA256="83da4439c1991c52be3922f9e7db1a8d3ab950d3dcc783fc7e52ff35b9594a51"
         CHECKSUMS+=("${GDB_SHA256}")
     fi
 
