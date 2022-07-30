@@ -123,7 +123,7 @@ function mingw-w64-build {  # mingw-w64-build [args] $TARGET_PARAM $TARGET_DIR
     GMP_VER="6.2.1"
     MPFR_VER="4.1.0"
     MPC_VER="1.2.1"
-    ISL_VER="0.25.0"
+    ISL_VER="0.25"
     GCC_VER="12.1.0"
     VERSIONS=("${CONFIG_VER}" "${BINUTILS_VER}" "${MINGW_W64_VER}" "${GMP_VER}" "${MPFR_VER}" "${MPC_VER}" "${ISL_VER}" "${GCC_VER}")
 
