@@ -117,7 +117,7 @@ function mingw-w64-build {  # mingw-w64-build [args] $TARGET_PARAM $TARGET_DIR
 
     # versions
     local CONFIG_VER BINUTILS_VER MINGW_W64_VER GMP_VER MPFR_VER MPC_VER ISL_VER GCC_VER GDB_VER VERSIONS
-    CONFIG_VER="02ba26"  # config.guess 2020-11-07
+    CONFIG_VER="77632d9"  # config.guess 2020-11-07
     BINUTILS_VER="2.38"
     MINGW_W64_VER="10.0.0"
     GMP_VER="6.2.1"
