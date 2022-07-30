@@ -343,7 +343,7 @@ default install-dir: ${HOME}/toolchains/mingw-w64-${MINGW_W64_VER}-gcc-${GCC_VER
         PKGS+=("${GDB_PKG}")
         GDB_URLS=("https://ftp.gnu.org/gnu/gdb/gdb-${GDB_VER}.tar.gz" "${ARCHIVE_URL}/${GDB_PKG}")
         URLS_VARNAMES+=('GDB_URLS')
-        GDB_SHA256="83da4439c1991c52be3922f9e7db1a8d3ab950d3dcc783fc7e52ff35b9594a51"
+        GDB_SHA256="87296a3a9727356b56712c793704082d5df0ff36a34ca9ec9734fc9a8bdfdaab"
         CHECKSUMS+=("${GDB_SHA256}")
     fi
 
