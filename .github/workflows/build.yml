@@ -56,7 +56,7 @@ jobs:
       uses: dev-drprasad/delete-older-releases@v0.2.0
       with:
         keep_latest: 0
-        delete_tag_pattern: "Linux Build"
+        delete_tag_pattern: "Linux"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
@@ -67,5 +67,5 @@ jobs:
         prerelease: false
         replacesArtifacts: false
         allowUpdates: false
-        tag: Linux Build
+        tag: Linux
         token: ${{ secrets.GITHUB_TOKEN }}
