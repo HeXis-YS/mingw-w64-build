@@ -33,8 +33,7 @@ jobs:
         ./mingw-w64-build pkgclean "${BUILD_TUPLE}"
         ./mingw-w64-build --list > "${BUILD_TUPLE}"/versions.txt
         tar -cvzf "${BUILD_TUPLE}".tar.gz "${BUILD_TUPLE}"
-    - name: Upload Release Asset
-      if: github.event_name == 'release'
+    - name: Upload Release Asset      
       uses: AButler/upload-release-assets@v2.0
       with:
           files: '*.tar.gz'
