@@ -18,7 +18,7 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get upgrade -y
-        sudo apt-get install bison bzip2 flex g++ gzip pax build-essential gcc 
+        sudo apt-get install bison bzip2 flex g++ tar gzip pax build-essential gcc 
     - name: Build Toolchain
       run: |
         BUILD_PREFIX="mingw-w64-toolchain"
@@ -33,11 +33,10 @@ jobs:
         ./mingw-w64-build pkgclean "${BUILD_TUPLE}"
         ./mingw-w64-build --list > "${BUILD_TUPLE}"/versions.txt
         tar -cvzf "${BUILD_TUPLE}".tar.gz "${BUILD_TUPLE}"
-        ls
-    - name: Upload Release Asset      
-      uses: AButler/upload-release-assets@v2.0
+    - name: Upload HandBrakeCLI
+      uses: actions/upload-artifact@v3
       with:
-          files: '*.tar.gz'
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+        name: HandBrakeCLI
+        path: *.tar.gz 
           
   
