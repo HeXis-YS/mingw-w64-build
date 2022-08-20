@@ -33,10 +33,10 @@ jobs:
         ./mingw-w64-build pkgclean "${BUILD_TUPLE}"
         ./mingw-w64-build --list > "${BUILD_TUPLE}"/versions.txt
         tar -cvzf "${BUILD_TUPLE}".tar.gz "${BUILD_TUPLE}"
-    - name: Upload HandBrakeCLI
+    - name: Upload Toolchain
       uses: actions/upload-artifact@v3
       with:
-        name: HandBrakeCLI
-        path: *.tar.gz 
+        name: Toolchain
+        path: ./*.tar.gz 
           
   
