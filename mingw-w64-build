@@ -117,51 +117,51 @@ function mingw-w64-build {  # mingw-w64-build [args] $TARGET_PARAM $TARGET_DIR
 
     # versions
     local CONFIG_VER BINUTILS_VER MINGW_W64_VER GMP_VER MPFR_VER MPC_VER ISL_VER GCC_VER GDB_VER VERSIONS
-    CONFIG_VER="8055171"  # config.guess 2021-06-03
-    BINUTILS_VER="2.37"
-    MINGW_W64_VER="8.0.2"
+    CONFIG_VER="63acb96"  # config.guess 2023-01-21
+    BINUTILS_VER="2.39"
+    MINGW_W64_VER="10.0.0"
     GMP_VER="6.2.1"
-    MPFR_VER="4.1.0"
-    MPC_VER="1.2.1"
-    ISL_VER="0.24"
-    GCC_VER="10.3.0"
+    MPFR_VER="4.1.1"
+    MPC_VER="1.3.1"
+    ISL_VER="0.25"
+    GCC_VER="12.2.0"
     VERSIONS=("${CONFIG_VER}" "${BINUTILS_VER}" "${MINGW_W64_VER}" "${GMP_VER}" "${MPFR_VER}" "${MPC_VER}" "${ISL_VER}" "${GCC_VER}")
 
     # filenames
     local CONFIG_PKG BINUTILS_PKG MINGW_W64_PKG GMP_PKG MPFR_PKG MPC_PKG ISL_PKG GCC_PKG GDB_PKG PKGS
     CONFIG_PKG="config-${CONFIG_VER}.tar.gz"
-    BINUTILS_PKG="binutils-${BINUTILS_VER}.tar.bz2"
+    BINUTILS_PKG="binutils-${BINUTILS_VER}.tar.xz"
     MINGW_W64_PKG="mingw-w64-v${MINGW_W64_VER}.tar.bz2"
-    GMP_PKG="gmp-${GMP_VER}.tar.bz2"
-    MPFR_PKG="mpfr-${MPFR_VER}.tar.gz"
+    GMP_PKG="gmp-${GMP_VER}.tar.xz"
+    MPFR_PKG="mpfr-${MPFR_VER}.tar.xz"
     MPC_PKG="mpc-${MPC_VER}.tar.gz"
-    ISL_PKG="isl-${ISL_VER}.tar.bz2"
-    GCC_PKG="gcc-${GCC_VER}.tar.gz"
+    ISL_PKG="isl-${ISL_VER}.tar.xz"
+    GCC_PKG="gcc-${GCC_VER}.tar.xz"
     PKGS=("${CONFIG_PKG}" "${BINUTILS_PKG}" "${MINGW_W64_PKG}" "${GMP_PKG}" "${MPFR_PKG}" "${MPC_PKG}" "${ISL_PKG}" "${GCC_PKG}")
 
     # urls
     local CONFIG_URLS BINUTILS_URLS MINGW_W64_URLS GMP_URLS MPFR_URLS MPC_URLS ISL_URLS GCC_URLS GDB_URLS URLS_VARNAMES ARCHIVE_URL
     ARCHIVE_URL="https://github.com/bradleysepos/mingw-w64-build-deps/releases/download/archive"
     CONFIG_URLS=("https://git.savannah.gnu.org/gitweb/?p=config.git;a=snapshot;h=${CONFIG_VER};sf=tgz" "${ARCHIVE_URL}/${CONFIG_PKG}")
-    BINUTILS_URLS=("https://ftp.gnu.org/gnu/binutils/binutils-${BINUTILS_VER}.tar.bz2" "${ARCHIVE_URL}/${BINUTILS_PKG}")
+    BINUTILS_URLS=("https://ftp.gnu.org/gnu/binutils/binutils-${BINUTILS_VER}.tar.xz" "${ARCHIVE_URL}/${BINUTILS_PKG}")
     MINGW_W64_URLS=("http://downloads.sourceforge.net/project/mingw-w64/mingw-w64/mingw-w64-release/mingw-w64-v${MINGW_W64_VER}.tar.bz2" "${ARCHIVE_URL}/${MINGW_W64_PKG}")
-    GMP_URLS=("https://ftp.gnu.org/gnu/gmp/gmp-${GMP_VER}.tar.bz2" "${ARCHIVE_URL}/${GMP_PKG}")
-    MPFR_URLS=("https://ftp.gnu.org/gnu/mpfr/mpfr-${MPFR_VER}.tar.gz" "${ARCHIVE_URL}/${MPFR_PKG}")
+    GMP_URLS=("https://ftp.gnu.org/gnu/gmp/gmp-${GMP_VER}.tar.xz" "${ARCHIVE_URL}/${GMP_PKG}")
+    MPFR_URLS=("https://ftp.gnu.org/gnu/mpfr/mpfr-${MPFR_VER}.tar.xz" "${ARCHIVE_URL}/${MPFR_PKG}")
     MPC_URLS=("https://ftp.gnu.org/gnu/mpc/mpc-${MPC_VER}.tar.gz" "${ARCHIVE_URL}/${MPC_PKG}")
-    ISL_URLS=("https://libisl.sourceforge.io/isl-${ISL_VER}.tar.bz2" "${ARCHIVE_URL}/${ISL_PKG}")
-    GCC_URLS=("https://ftp.gnu.org/gnu/gcc/gcc-${GCC_VER}/gcc-${GCC_VER}.tar.gz" "${ARCHIVE_URL}/${GCC_PKG}")
+    ISL_URLS=("https://libisl.sourceforge.io/isl-${ISL_VER}.tar.xz" "${ARCHIVE_URL}/${ISL_PKG}")
+    GCC_URLS=("https://ftp.gnu.org/gnu/gcc/gcc-${GCC_VER}/gcc-${GCC_VER}.tar.xz" "${ARCHIVE_URL}/${GCC_PKG}")
     URLS_VARNAMES=('CONFIG_URLS' 'BINUTILS_URLS' 'MINGW_W64_URLS' 'GMP_URLS' 'MPFR_URLS' 'MPC_URLS' 'ISL_URLS' 'GCC_URLS')
 
     # checksums
     local CONFIG_SHA256 BINUTILS_SHA256 MINGW_W64_SHA256 GMP_SHA256 MPFR_SHA256 MPC_SHA256 ISL_SHA256 GCC_SHA256 GDB_SHA256 CHECKSUMS
-    CONFIG_SHA256="26d76d7a390de6e6c840caf0fac089e5fda7af6bf2b83af3be4683e48d42562f"
-    BINUTILS_SHA256="67fc1a4030d08ee877a4867d3dcab35828148f87e1fd05da6db585ed5a166bd4"
-    MINGW_W64_SHA256="f00cf50951867a356d3dc0dcc7a9a9b422972302e23d54a33fc05ee7f73eee4d"
-    GMP_SHA256="eae9326beb4158c386e39a356818031bd28f3124cf915f8c5b1dc4c7a36b4d7c"
-    MPFR_SHA256="3127fe813218f3a1f0adf4e8899de23df33b4cf4b4b3831a5314f78e65ffa2d6"
-    MPC_SHA256="17503d2c395dfcf106b622dc142683c1199431d095367c6aacba6eec30340459"
-    ISL_SHA256="fcf78dd9656c10eb8cf9fbd5f59a0b6b01386205fe1934b3b287a0a1898145c0"
-    GCC_SHA256="8fcf994811ad4e5c7ac908e8cf62af2c1982319e5551f62ae72016064dacdf16"
+    CONFIG_SHA256="05734a954e92c19513c1dcbaadf4b72a421f29ddfd0469e291017a6bc530f3cd"
+    BINUTILS_SHA256="645c25f563b8adc0a81dbd6a41cffbf4d37083a382e02d5d3df4f65c09516d00"
+    MINGW_W64_SHA256="ba6b430aed72c63a3768531f6a3ffc2b0fde2c57a3b251450dcf489a894f0894"
+    GMP_SHA256="fd4829912cddd12f84181c3451cc752be224643e87fac497b69edddadc49b4f2"
+    MPFR_SHA256="ffd195bd567dbaffc3b98b23fd00aad0537680c9896171e44fe3ff79e28ac33d"
+    MPC_SHA256="ab642492f5cf882b74aa0cb730cd410a81edcdbec895183ce930e706c1c759b8"
+    ISL_SHA256="be7b210647ccadf90a2f0b000fca11a4d40546374a850db67adb32fad4b230d9"
+    GCC_SHA256="e549cf9cf3594a00e27b6589d4322d70e0720cdd213f39beb4181e06926230ff"
     CHECKSUMS=("${CONFIG_SHA256}" "${BINUTILS_SHA256}" "${MINGW_W64_SHA256}" "${GMP_SHA256}" "${MPFR_SHA256}" "${MPC_SHA256}" "${ISL_SHA256}" "${GCC_SHA256}")
 
     # internal vars
@@ -337,13 +337,13 @@ default install-dir: ${HOME}/toolchains/mingw-w64-${MINGW_W64_VER}-gcc-${GCC_VER
     if [[ "${DISABLE_GDB}" == false ]] || [[ "${LIST}" == true ]]; then
         GDB_NAME="gdb"
         NAMES+=("${GDB_NAME}")
-        GDB_VER="10.2"
+        GDB_VER="12.1"
         VERSIONS+=("${GDB_VER}")
-        GDB_PKG="gdb-${GDB_VER}.tar.gz"
+        GDB_PKG="gdb-${GDB_VER}.tar.xz"
         PKGS+=("${GDB_PKG}")
-        GDB_URLS=("https://ftp.gnu.org/gnu/gdb/gdb-${GDB_VER}.tar.gz" "${ARCHIVE_URL}/${GDB_PKG}")
+        GDB_URLS=("https://ftp.gnu.org/gnu/gdb/gdb-${GDB_VER}.tar.xz" "${ARCHIVE_URL}/${GDB_PKG}")
         URLS_VARNAMES+=('GDB_URLS')
-        GDB_SHA256="b33ad58d687487a821ec8d878daab0f716be60d0936f2e3ac5cf08419ce70350"
+        GDB_SHA256="0e1793bf8f2b54d53f46dea84ccfd446f48f81b297b28c4f7fc017b818d69fed"
         CHECKSUMS+=("${GDB_SHA256}")
     fi
 
