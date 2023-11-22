@@ -184,7 +184,7 @@ usage: ${SELF_NAME} [-h | --help]
        ${SELF_NAME} [-l | --list]
        ${SELF_NAME} [-v | --version]
        ${SELF_NAME} [-f | --force] [-j # | --jobs #] [--msvcrt runtime]
-                    [--disable-gdb] target [install-dir]
+                    [--enable-gdb] [--disable-gdb] target [install-dir]
 where:
   -h, --help
         display this help text
@@ -200,8 +200,9 @@ where:
   --msvcrt
         msvc runtime version (msvcrt or ucrt)
         default: msvcrt
+  --enable-gdb
   --disable-gdb
-        disable building GDB debugger
+        enable / disable building GDB debugger
 targets:
   i686
   i686.clean
@@ -218,10 +219,10 @@ default install-dir: ${HOME}/toolchains/mingw-w64-${MINGW_W64_VER}-msvcrt-gcc-${
     JOBS=0
     LIST=false
     MSVCRT="msvcrt"
-    DISABLE_GDB=false
+    DISABLE_GDB=true
     OPTIND=1
     OPTSPEC=":-:hlvfj:"
-    OPTARRAY=('-h' '--help' '-l' '--list' '-v' '--version' '-f' '--force' '-j' '--jobs' '--msvcrt' '--disable-gdb')  # all short and long options
+    OPTARRAY=('-h' '--help' '-l' '--list' '-v' '--version' '-f' '--force' '-j' '--jobs' '--msvcrt' '--enable-gdb' '--disable-gdb')  # all short and long options
     while getopts "${OPTSPEC}" OPT; do
         case "${OPT}" in
             -)
@@ -313,6 +314,10 @@ default install-dir: ${HOME}/toolchains/mingw-w64-${MINGW_W64_VER}-msvcrt-gcc-${
                             echo -e "${HELP}"
                             return 1
                         fi
+                        ;;
+                    enable-gdb)
+                        # Enable GDB
+                        DISABLE_GDB=false
                         ;;
                     disable-gdb)
                         # Disable GDB
